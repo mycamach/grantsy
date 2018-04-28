@@ -1,0 +1,13 @@
+{
+  "name": "foundation_platform",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "bootstrap4-datetimepicker": "^5.2.3",
+    "fullcalendar": "^3.9.0",
+    "tether": "^1.4.3"
+  },
+  "engines": {
+    "yarn": "1.5.1"
+  }
+}

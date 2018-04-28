@@ -1,0 +1,43 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require bootstrap/dist/css/bootstrap
+ *= require fullcalendar/dist/fullcalendar
+ *= require tether/dist/css/tether
+ *= require bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.min
+ *= require fatly
+ *= require scheduler
+ *= require font-awesome
+ *= require landing-page
+ *= require simple-line-icons
+ *= require pricing-table
+ *= require calendar
+ *= stub active_admin
+ *= require_self
+ */
+
+.alert{
+  margin-bottom: 0;
+}
+
+.spinner_funds {
+  display: none;
+  margin: 1.5em;
+}
+
+.wrap {
+  min-height: 70vh;
+}
+
+.navbar-collapse.show {
+  background-color: rgba(0,0,0,0.1);
+}

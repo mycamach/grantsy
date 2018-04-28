@@ -1,0 +1,32 @@
+<section class="pricing-table">
+  <div class="container">
+    <div class="block-heading">
+      <h2>Lista de planes</h2>
+      <p>Inscríbete en nuestro plan premium y accede a nuestro buscador de fondos y calendario.</p>
+    </div>
+    <div class="row justify-content-md-center">
+      <% @subscriptions.each do |subscription| %>
+      <div class="col-md-5 col-lg-4">
+        <div class="item">
+          <% if subscription.plan_name == "6 meses" %>
+            <div class="ribbon"> <%= "Best value" %> </div>
+            <% end %>
+          <div class="heading">
+            <h3><%= subscription.plan_name %></h3>
+          </div>
+          <p><%= "Este es el plan de #{subscription.plan_name}."%></p>
+          <div class="features">
+            <h4><span class="feature">Duración</span> : <span class="value"><%= subscription.plan_name %></span></h4>
+          </div>
+          <div class="price">
+            <h4>$<%= subscription.price %></h4>
+          </div>
+          <%= link_to "Comprar", subscription_orders_path(subscription), data: {toggle: "modal", target: "#modal-window"}, class: 'btn btn-outline-success btn-block', method: :post %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%= render 'shared/modal' %>

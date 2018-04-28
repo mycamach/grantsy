@@ -1,0 +1,4 @@
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<% my_chart = Order.created_by_day %>
+
+<%= column_chart my_chart %>

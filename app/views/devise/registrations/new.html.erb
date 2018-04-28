@@ -1,0 +1,65 @@
+<div class="container-fluid">
+
+  <h2> Regístrate </h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation,  autocomplete: "off" %>
+  </div>
+
+  <%= fields_for :organization, resource.organization do |of| %>
+
+  <div class="field">
+    <%= of.label :nombre_institución %><br />
+    <%= of.text_field :name, autocomplete: "name" %>
+  </div>
+
+  <div class="address">
+    <%= of.label :dirección %><br />
+    <%= of.text_field :address, autocomplete: "address" %>
+  </div>
+
+  <div class="country">
+    <%= of.label :país %><br />
+    <%= of.text_field :country, autocomplete: "country" %>
+  </div>
+
+  <div class="phone">
+    <%= of.label :teléfono %><br />
+    <%= of.telephone_field :phone, autocomplete: "phone" %>
+  </div>
+
+  <div class="website">
+    <%= of.label :sitio_web %><br />
+    <%= of.url_field :website, autocomplete: "website" %>
+  </div>
+
+  <div class="dni">
+    <%= of.label :rut %><br />
+    <%= of.text_field :dni, autocomplete: "dni" %>
+  </div>
+
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Enviar" %>
+  </div>
+  <% end %>
+
+</div>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  institution: MyString
+  name: MyString
+  description: MyText
+  amount: 1
+  start: 2018-03-05 16:33:53
+  end: 2018-05-05 19:33:53
+  url: MyString
+
+two:
+  institution: MyString
+  name: MyString
+  description: MyText
+  amount: 1
+  start: 2017-03-05 20:33:53
+  end: 2017-05-05 15:33:53
+  url: MyString

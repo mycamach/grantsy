@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="<%= funds_path%>">Grantsy</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <% if current_user.premium? %>
+        <a class="nav-link" href="<%= calendar_index_path%>">Calendario</a>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= orders_path %>">Mi carro</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <%= "#{current_user.email}" %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<%= edit_user_registration_path%>">Mi cuenta</a>
+          <% if current_user.admin? %>
+          <a class="dropdown-item" href="<%= admin_dashboard_path%>">Panel de admin</a>
+          <% end %>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="<%= destroy_user_session_path%>", data-method='DELETE'>Cerrar sesión <i class="icon-logout m-auto text-primary"></i></a>
+        </div>
+      </li>
+    </ul>
+    <% else %>
+    <div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_session_path%>">Log-in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_registration_path %>">Registro</a>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

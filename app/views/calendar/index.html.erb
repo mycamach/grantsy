@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <div id="calendar"></div>
+
+  <%= render 'shared/modal' %>
+
+  <%= link_to 'Volver al menú', funds_path, class: 'btn btn-success btn-lg' %>
+
+  <% if current_user.admin? %>
+  <%= link_to 'Crear nuevo fondo',  new_fund_path, class: 'btn btn-success btn-lg' %>
+  <% end %>
+</div>

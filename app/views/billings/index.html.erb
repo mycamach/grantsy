@@ -1,0 +1,9 @@
+<div class="container">
+  <% @billings.each do |billing| %>
+  <%= billing.amount %>
+  <hr>
+  <% billing.orders.each do |order| %>
+  <%= order.subscription.plan_name %>
+  <% end %>
+  <% end %>
+</div>

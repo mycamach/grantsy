@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fund: one
+  tag: one
+
+two:
+  fund: two
+  tag: two

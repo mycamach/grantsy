@@ -1,0 +1,57 @@
+<table class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Fondo</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Nombre fondo</th>
+        <td><%= @fund.name %></td>
+      </tr>
+      <tr>
+        <th scope="row">Institución</th>
+        <td><%= @fund.institution %></td>
+      </tr>
+      <tr>
+        <th scope="row">Descripción</th>
+        <td><%= @fund.description %></td>
+      </tr>
+      <tr>
+        <th scope="row">Monto</th>
+        <td><%= @fund.amount %></td>
+      </tr>
+      <tr>
+        <th scope="row">Comienzo postulación</th>
+        <td><%= l @fund.start, format: :custom %></td>
+      </tr>
+      <tr>
+        <th scope="row">Término postulación</th>
+        <td><%= l @fund.end, format: :custom %></td>
+      </tr>
+      <tr>
+        <th scope="row">Sitio web</th>
+        <td><%= @fund.url %></td>
+      </tr>
+      <tr>
+        <% if current_user.admin? %>
+        <th scope="row">Tags</th>
+        <td>
+          <form>
+            <select multiple data-role>
+              <% @fund.tags.each do |t| %>
+              <option value="<%= t.name %>"><%= t.name %></option>
+              <% end %>
+              <% end %>
+            </select>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</table>
+
+<%= link_to 'Volver al menú', funds_path, class: 'btn btn-success' %>
+

@@ -1,0 +1,51 @@
+document.addEventListener("turbolinks:before-cache", function(){
+  $('#calendar').fullCalendar('destroy');
+});
+
+document.addEventListener("turbolinks:load", function(){
+
+  $("#calendar").fullCalendar({
+    events: '/calendar/index',
+    schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+    header: {
+      left: 'today prev,next',
+      center: 'title',
+      right: 'timelineMonth,timelineSixMonths,timelineYear'
+    },
+    handleWindowResize: true,
+    displayEventTime: false,
+    eventBackgroundColor: '#069380',
+    eventBorderColor: '#069380',
+    defaultView: 'timelineMonth',
+    views: {
+      timelineSixMonths: {
+        type: 'timeline',
+        slotDuration: { months: 1 },
+        duration: { months: 6 },
+        slotLabelFormat: [ 'MMMM' ],
+      },
+      timelineYear: {
+        type: 'timeline',
+        slotDuration: { months: 1 },
+        duration: { months: 12 }
+      }
+    },
+    eventClick: function( event, jsEvent, view ) {
+      console.log(event);
+      $.ajax({
+        url: '/funds/' + event.id + '/edit',
+        type: 'GET',
+        dataType: 'script',
+      })
+      .done(function() {
+        console.log("success");
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+    },
+  });
+});

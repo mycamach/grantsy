@@ -1,0 +1,3 @@
+$(".modal").modal("hide");
+$("#calendar").fullCalendar("refetchEvents");
+$('.flash').html("<%= j render 'shared/alerts', locals: {flash: flash} %>")

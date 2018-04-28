@@ -1,0 +1,58 @@
+<%= form_with(model: @fund) do |form| %>
+<% if @fund.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@fund.errors.count, "error") %> prohibited this fund from being saved:</h2>
+  <ul>
+    <% @fund.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="name">
+  <%= form.label :nombre_del_fondo %><br/>
+  <%= form.text_field :name %>
+</div>
+
+<div class="field">
+  <%= form.label :institución %><br/>
+  <%= form.text_field :institution %>
+</div>
+
+<div class="field">
+  <%= form.label :descripción %><br/>
+  <%= form.text_area :description, size: "55x5" %>
+</div>
+
+<div class="field">
+  <%= form.label :comienzo_postulación %><br/>
+  <%= form.date_field :start, id: 'fund_start' %>
+</div>
+
+<div class="field">
+  <%= form.label :fin_postulación %><br/>
+  <%= form.date_field :end, id: 'fund_end' %>
+</div>
+
+<div class= "field">
+  <% form.label :tags %><br/>
+  <%= form.collection_check_boxes :tag_ids, @fund.tags, :id, :name do |b|%>
+  <div class="collection-check-box">
+    <%= b.check_box %>
+    <%= b.label %>
+  </div>
+<% end %>
+</div>
+
+<%= form.fields_for :tag do |form_tag| %>
+<div class= "field">
+  <% form_tag.label :select_tag %></div><br/>
+  <%= form_tag.select(:id, Tag.all.collect{|t| [t.name, t.id]}, { :include_blank => 'No agregar tag' })%>
+<% end %>
+</div >
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+<% end %>

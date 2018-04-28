@@ -1,0 +1,33 @@
+document.addEventListener("turbolinks:load", function(){
+  $("#tablequery").hide();
+  $("[name=q").keyup(function(event) {
+    var input = $(this).val().length;
+    if(input > 2) {
+      $.ajax({
+        url: '/funds',
+        type: 'GET',
+        dataType: 'script',
+        data: {q: $(this).val()},
+        beforeSend: function() {
+          $(".spinner_funds").show();
+        },
+        complete: function(data) {
+          $(".spinner_funds").hide();
+        }
+      })
+      .done(function() {
+        $("#tablequery").show()
+        console.log("success");
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+    } else {
+      $("#tablequery").hide();
+      $("#funds").html("");
+    }
+  })
+});
